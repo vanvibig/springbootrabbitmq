@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitConfig {
 
-    public static final String topicExchangeName = "spring-boot-exhcange";
+    public static final String topicExchangeName = "spring-boot-exchange";
 
     public static final String queueName = "spring-boot";
 
@@ -33,7 +33,7 @@ public class RabbitConfig {
         return BindingBuilder
                 .bind(queue)
                 .to(exchange)
-                .with("foo.bar.#");
+                .with("foo.bar.baz");
     }
 
     @Bean

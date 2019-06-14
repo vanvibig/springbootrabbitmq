@@ -27,9 +27,9 @@ public class Runner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         log.info("Senđing message...");
         rabbitTemplate.convertAndSend(
-                RabbitConfig.topicExchangeName,
+                "spring-boot-exchange",
                 "foo.bar.baz",
-                "Hello from RabbitMQ!");
+                "Hello from RabbitMQ123!");
         receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
     }
 }
