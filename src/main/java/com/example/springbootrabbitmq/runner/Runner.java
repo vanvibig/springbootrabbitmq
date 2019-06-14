@@ -1,5 +1,7 @@
-package com.example.springbootrabbitmq;
+package com.example.springbootrabbitmq.runner;
 
+import com.example.springbootrabbitmq.component.Receiver;
+import com.example.springbootrabbitmq.config.RabbitConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -25,7 +27,7 @@ public class Runner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         log.info("Senđing message...");
         rabbitTemplate.convertAndSend(
-                SpringbootrabbitmqApplication.topicExchangeName,
+                RabbitConfig.topicExchangeName,
                 "foo.bar.baz",
                 "Hello from RabbitMQ!");
         receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
